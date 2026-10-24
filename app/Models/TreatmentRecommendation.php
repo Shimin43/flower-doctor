@@ -19,6 +19,10 @@ class TreatmentRecommendation extends Model
         'farmer_advice',
         'treatment_type',
         'safety_precautions',
+        'pesticide_name',
+        'pesticide_usage',
+        'fertilizer_name',
+        'fertilizer_usage',
         'is_active',
     ];
 

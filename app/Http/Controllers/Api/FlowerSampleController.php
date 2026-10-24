@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\FlowerImage;
 use App\Models\FlowerSample;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class FlowerSampleController extends Controller
 {
@@ -39,7 +38,7 @@ class FlowerSampleController extends Controller
     // Create a new flower sample
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        $request->validate([
             'sample_id' => 'required|string|max:255|unique:flower_samples,sample_id',
             'flower_species' => 'required|string|max:255',
             'sample_date' => 'nullable|date',
@@ -96,7 +95,7 @@ class FlowerSampleController extends Controller
         ]);
     }
 
-    // Upload an image and save its information in the database
+    // Upload an image and save its information
     public function uploadImage(Request $request)
     {
         $validated = $request->validate([
@@ -111,7 +110,8 @@ class FlowerSampleController extends Controller
         $path = $request->file('image')
             ->store('flower-uploads', 'public');
 
-        $url = Storage::disk('public')->url($path);
+        // Generate image URL using APP_URL configuration
+        $url = asset('storage/' . $path);
 
         $flowerImage = FlowerImage::create([
             'flower_sample_id' => $validated['flower_sample_id'],

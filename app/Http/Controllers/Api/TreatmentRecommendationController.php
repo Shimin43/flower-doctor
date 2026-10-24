@@ -64,6 +64,10 @@ class TreatmentRecommendationController extends Controller
             'farmer_advice' => 'nullable|string',
             'treatment_type' => 'nullable|string|max:255',
             'safety_precautions' => 'nullable|string',
+            'pesticide_name' => 'nullable|string|max:255',
+            'pesticide_usage' => 'nullable|string',
+            'fertilizer_name' => 'nullable|string|max:255',
+            'fertilizer_usage' => 'nullable|string',
             'is_active' => 'sometimes|boolean',
         ]);
 
@@ -98,6 +102,10 @@ class TreatmentRecommendationController extends Controller
             'farmer_advice' => 'sometimes|nullable|string',
             'treatment_type' => 'sometimes|nullable|string|max:255',
             'safety_precautions' => 'sometimes|nullable|string',
+            'pesticide_name' => 'sometimes|nullable|string|max:255',
+            'pesticide_usage' => 'sometimes|nullable|string',
+            'fertilizer_name' => 'sometimes|nullable|string|max:255',
+            'fertilizer_usage' => 'sometimes|nullable|string',
             'is_active' => 'sometimes|boolean',
         ]);
 
